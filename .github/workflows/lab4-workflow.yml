@@ -19,12 +19,6 @@ jobs:
             registry-url: 'https://npm.pkg.github.com'
         - name: install dependencies
           run: npm install
-        - name: Config List
-          run: npm config list
-        - name: Publish package on a registery
-          env:
-            NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          run: npm publish --registry=https://npm.pkg.github.com
         - name: Publish package
           env:
             NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
