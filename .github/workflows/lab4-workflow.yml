@@ -7,6 +7,9 @@ on:
 jobs:
     npm-package:
       runs-on: ubuntu-latest
+      permissions:
+        packages: write
+        contents: read
       steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
@@ -16,3 +19,7 @@ jobs:
             registry-url: 'https://registry.npmjs.org'
         - name: install dependencies
           run: npm install
+        - name: Publish package
+          env:
+            NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: npm publish 
